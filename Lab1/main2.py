@@ -1,0 +1,1 @@
+print("NO king rules forever")
