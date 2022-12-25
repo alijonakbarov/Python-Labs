@@ -5,7 +5,7 @@ from github import Github
 
 
 
-TELEGRAM_TOKEN = "5855937352:AAGTXLlIwIf373SkOqE1s3Qjc8VIK5_60CY"
+TELEGRAM_TOKEN = "5422270698:AAGNeLwbVipHPB_ZbZ8qKi3jo1GKTBxnBEA"
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
@@ -15,6 +15,7 @@ def load_last_update(message):
     _, user_name, repo_name = message.text.split()
 
     # Create an object to interact with the github.
+
     g = Github()
 
     # Upload the user by his/her name.
@@ -31,8 +32,7 @@ def load_last_update(message):
             target_repo = repo
             break
 
-    # If we didn't find a repository with that name.
-
+    # If we did not find a repository with that name.
     if target_repo is None:
         return None
 
@@ -41,8 +41,7 @@ def load_last_update(message):
     return date.year, date.month, date.day
 
 
-# Expect to receive a command in the following format:
-# check <username> <repository name>
+# Expect to receive a command in the following format: check <user name> <repository name>
 def check_request(message):
     request = message.text.split()
     if len(request) == 3 and request[0] == 'check':
@@ -63,8 +62,7 @@ def check_repo_update(message):
     bot.send_message(message.chat.id, response)
 
 
-# Expect to receive a command in the following format:
-# show <username>
+# Expect to receive a command in the following format:show <user name>
 def check_show_request(message):
     request = message.text.split()
     if len(request) == 2 and request[0] == 'show':
@@ -91,4 +89,3 @@ def show_repos(message):
 
 
 bot.polling()
-Footer
